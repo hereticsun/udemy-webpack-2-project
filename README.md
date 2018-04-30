@@ -10,3 +10,9 @@ git clone https://github.com/StephenGrider/WebpackProject.git
 cd WebpackProject
 npm install
 ```
+
+To deploy run the following in your terminal:
+
+```
+surge -p dist
+```
