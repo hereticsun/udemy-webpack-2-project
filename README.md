@@ -10,3 +10,9 @@ git clone https://github.com/StephenGrider/WebpackProject.git
 cd WebpackProject
 npm install
 ```
+
+* Create `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in AWS console
+* Create the bucket by running `s3-website create [bucket name]` in Terminal
+* Run `npm run build` and then `s3-website deploy dist` to deploy
+
+DO NOT COMMIT AWS KEYS TO GIT!
