@@ -1,10 +1,19 @@
 const express = require('express');
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
+const past = require('path');
 
 const app = express();
 
-app.use(webpackMiddleware(webpack(webpackConfig)));
+if (process.env.NODE_ENV !== 'production') {
+  const webpackMiddleware = require('webpack-dev-middleware');
+  const webpack = require('webpack');
+  const webpackConfig = require('./webpack.config.js');
+  app.use(webpackMiddleware(webpack(webpackConfig)));
+} else {
+  app.use(express.static('dist'));
+  app.get('*', (requestAnimationFrame, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'))
+  });
+}
 
-app.listen(3050, () => console.log('Listening'));
+
+app.listen(process.env.PORT || 3050, () => console.log('Listening'));
